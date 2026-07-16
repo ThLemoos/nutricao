@@ -296,3 +296,7 @@ footer {
     color: var(--leaf);
     background: var(--cream);
 }
+
+.inner img {
+    width: 100%;
+}
