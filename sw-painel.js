@@ -7,8 +7,8 @@ const ASSETS = [
     '/js/script.js',
     '/js/painel.js',
     '/js/firebase.js',
-    '/img/icons/icon-192.png',
-    '/img/icons/icon-512.png'
+    '/img/icon-192.png',
+    '/img/icon-512.png'
 ];
 
 self.addEventListener('install', (event) => {
