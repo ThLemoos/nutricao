@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/painel.css">
     <link rel="stylesheet" href="../css/plano.css">
+
+    <link rel="manifest" href="/painel-manifest.json">
+    <meta name="theme-color" content="#2B4530">
+
+    <!-- suporte específico pro iOS -->
+    <link rel="apple-touch-icon" href="/img/icons/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Painel Alice">
 </head>
 
 <body>
@@ -73,6 +82,16 @@
 
     <script src="../js/script.js"></script>
     <script type="module" src="../js/painel.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw-painel.js')
+                    .then(() => console.log('Service Worker registrado'))
+                    .catch((err) => console.error('Erro ao registrar SW:', err));
+            });
+        }
+    </script>
 
 </body>
 
