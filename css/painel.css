@@ -1,0 +1,708 @@
+.painel-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12vh 6vw 8vh;
+}
+
+.login-box {
+    max-width: 360px;
+    margin: 14vh auto;
+    background: #fff;
+    border: 1.5px solid rgba(43, 69, 48, .12);
+    border-radius: 20px;
+    padding: 2.2rem;
+    box-shadow: 0 20px 44px rgba(43, 69, 48, .08);
+}
+
+.login-box h2 {
+    font-family: 'Fraunces', serif;
+    color: var(--forest);
+    margin-top: 0;
+}
+
+.paciente-card {
+    background: #fff;
+    border: 1.5px solid rgba(43, 69, 48, .12);
+    border-radius: 16px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: .9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.paciente-info h3 {
+    font-family: 'Fraunces', serif;
+    margin: 0 0 .2rem;
+    color: var(--forest);
+    font-size: 1.05rem;
+}
+
+.paciente-info p {
+    margin: .1rem 0;
+    font-size: .85rem;
+    color: var(--ink);
+    opacity: .75;
+}
+
+.badge-novo {
+    background: var(--citrus);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 600;
+    padding: .2rem .6rem;
+    border-radius: 999px;
+    margin-left: .5rem;
+    vertical-align: middle;
+}
+
+.badge-pendente {
+    background: #F0C36B;
+    color: #5a4207;
+    font-size: .7rem;
+    font-weight: 600;
+    padding: .2rem .6rem;
+    border-radius: 999px;
+    margin-left: .5rem;
+    vertical-align: middle;
+}
+
+.badge-aceito {
+    background: var(--leaf);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 600;
+    padding: .2rem .6rem;
+    border-radius: 999px;
+    margin-left: .5rem;
+    vertical-align: middle;
+}
+
+.badge-recusado {
+    background: #c0392b;
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 600;
+    padding: .2rem .6rem;
+    border-radius: 999px;
+    margin-left: .5rem;
+    vertical-align: middle;
+}
+
+.badge-pausado {
+    background: var(--blush);
+    color: #6b2e28;
+    font-size: .7rem;
+    font-weight: 600;
+    padding: .2rem .6rem;
+    border-radius: 999px;
+    margin-left: .5rem;
+    vertical-align: middle;
+}
+
+.paciente-actions {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.paciente-actions select {
+    padding: .4rem .6rem;
+    border-radius: 8px;
+    border: 1.5px solid rgba(43, 69, 48, .2);
+    font-size: .82rem;
+}
+
+.paciente-actions button {
+    background: var(--forest);
+    color: var(--cream);
+    border: none;
+    padding: .5rem .9rem;
+    border-radius: 999px;
+    font-size: .8rem;
+    cursor: pointer;
+}
+
+.btn-recusar {
+    background: transparent !important;
+    color: #c0392b !important;
+    border: 1.5px solid #c0392b !important;
+}
+
+.btn-editar-plano {
+    background: transparent !important;
+    color: var(--forest) !important;
+    border: 1.5px solid var(--forest) !important;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.top-bar button,
+.top-bar-btn {
+    background: transparent;
+    border: 1.5px solid var(--forest);
+    color: var(--forest);
+    padding: .5rem 1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: .85rem;
+}
+
+#empty-msg {
+    text-align: center;
+    color: var(--ink);
+    opacity: .6;
+    padding: 3rem 0;
+}
+
+.card-wrap {
+    background: #fff;
+    border: 1.5px solid rgba(43, 69, 48, .12);
+    border-radius: 16px;
+    margin-bottom: .9rem;
+    overflow: hidden;
+}
+
+.card-wrap .paciente-card {
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.plano-panel {
+    display: none;
+    padding: 1.2rem 1.4rem 1.6rem;
+    border-top: 1.5px dashed rgba(43, 69, 48, .15);
+}
+
+.plano-panel.open {
+    display: block;
+}
+
+.plano-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .7rem;
+    margin-bottom: .9rem;
+}
+
+.plano-grid .calc-field {
+    margin-bottom: 0;
+}
+
+.plano-grid label {
+    font-size: .75rem;
+}
+
+.plano-panel textarea {
+    width: 100%;
+    padding: .7rem .9rem;
+    border-radius: 10px;
+    border: 1.5px solid rgba(43, 69, 48, .2);
+    font-family: 'Work Sans', sans-serif;
+    font-size: .9rem;
+    min-height: 90px;
+    margin-bottom: .9rem;
+    background: var(--cream);
+}
+
+.plano-panel .salvar-plano {
+    border: none;
+}
+
+@media (max-width:640px) {
+    .plano-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* área do paciente */
+.status-box {
+    max-width: 460px;
+    margin: 8vh auto 0;
+    text-align: center;
+    background: #fff;
+    border: 1.5px solid rgba(43, 69, 48, .12);
+    border-radius: 20px;
+    padding: 2.6rem 2rem;
+    box-shadow: 0 20px 44px rgba(43, 69, 48, .08);
+}
+
+.status-emoji {
+    font-size: 2.4rem;
+    display: block;
+    margin-bottom: .6rem;
+}
+
+.status-box h2 {
+    font-family: 'Fraunces', serif;
+    color: var(--forest);
+    margin: 0 0 .6rem;
+    font-size: 1.4rem;
+}
+
+.status-box p {
+    line-height: 1.6;
+    color: var(--ink);
+    opacity: .8;
+    margin: 0 0 1.4rem;
+}
+
+.status-box-recusado .status-box,
+.status-box-recusado {
+    border-color: rgba(192, 57, 43, .2);
+}
+
+.plano-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.6rem;
+}
+
+@media (max-width: 760px) {
+    .plano-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.plano-card {
+    background: #fff;
+    border: 1.5px solid rgba(43, 69, 48, .12);
+    border-radius: 16px;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+}
+
+.plano-card .label {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    color: var(--leaf);
+}
+
+.plano-card .value {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--forest);
+}
+
+.plano-card.destaque {
+    background: var(--forest);
+    border-color: var(--forest);
+}
+
+.plano-card.destaque .label {
+    color: var(--citrus-light);
+}
+
+.plano-card.destaque .value {
+    color: var(--cream);
+}
+
+.dash-section {
+    background: #fff;
+    border: 1.5px solid rgba(43, 69, 48, .12);
+    border-radius: 16px;
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.dash-section h3 {
+    font-family: 'Fraunces', serif;
+    color: var(--forest);
+    font-size: 1.05rem;
+    margin: 0 0 .8rem;
+}
+
+.dash-text {
+    white-space: pre-wrap;
+    line-height: 1.6;
+    font-size: .92rem;
+    margin: 0;
+    color: var(--ink);
+}
+
+.peso-form {
+    display: flex;
+    gap: .7rem;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.peso-form input {
+    flex: 1;
+    min-width: 160px;
+    padding: .7rem .9rem;
+    border-radius: 10px;
+    border: 1.5px solid rgba(43, 69, 48, .2);
+    font-family: 'Work Sans', sans-serif;
+    font-size: .95rem;
+    background: var(--cream);
+    color: var(--ink);
+}
+
+.peso-form button {
+    padding: .7rem 1.4rem;
+}
+
+.peso-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: .4rem;
+    height: 90px;
+    margin-bottom: 1rem;
+    padding: 0 .2rem;
+}
+
+.peso-bar {
+    flex: 1;
+    background: linear-gradient(180deg, var(--citrus-light), var(--citrus));
+    border-radius: 4px 4px 0 0;
+    min-height: 6%;
+    transition: height .3s ease;
+}
+
+.peso-lista {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.peso-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: .85rem;
+    padding: .5rem .2rem;
+    border-bottom: 1px dashed rgba(43, 69, 48, .12);
+}
+
+.peso-item span {
+    opacity: .65;
+}
+
+.peso-item strong {
+    color: var(--forest);
+}
+
+.perfil-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+@media (max-width: 640px) {
+    .perfil-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.perfil-grid span {
+    display: block;
+    font-size: .75rem;
+    opacity: .6;
+    margin-bottom: .2rem;
+}
+
+.perfil-grid strong {
+    color: var(--forest);
+    font-size: .95rem;
+}
+
+/* login com o Google */
+.btn-google {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .7rem;
+    background: #fff;
+    border: 1.5px solid rgba(43, 69, 48, .2);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: .9rem;
+    padding: .75rem 1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background .2s ease, box-shadow .2s ease;
+}
+
+.btn-google:hover {
+    background: var(--cream);
+    box-shadow: 0 4px 12px rgba(43, 69, 48, .1);
+}
+
+.ou-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1.1rem 0;
+    color: var(--ink);
+    opacity: .5;
+    font-size: .8rem;
+}
+
+.ou-divider::before,
+.ou-divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid rgba(43, 69, 48, .2);
+}
+
+.ou-divider span {
+    padding: 0 .8rem;
+}
+
+/* calculadores de macros que tem no painel da nutri */
+.macro-sliders {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem 0 .8rem;
+}
+
+.macro-slider-row label {
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin-bottom: .35rem;
+}
+
+.macro-slider-row .macro-perc {
+    color: var(--citrus);
+}
+
+.macro-slider-row .macro-gramas {
+    margin-left: auto;
+    font-weight: 500;
+    color: var(--ink);
+    opacity: .7;
+}
+
+.macro-slider-row input[type="range"] {
+    width: 100%;
+    accent-color: var(--citrus);
+    cursor: pointer;
+}
+
+.macro-bar {
+    display: flex;
+    height: 14px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(43, 69, 48, .08);
+    margin-bottom: .3rem;
+}
+
+.macro-bar>div {
+    transition: width .2s ease;
+}
+
+.seg-proteina {
+    background: var(--citrus);
+}
+
+.seg-carboidrato {
+    background: var(--leaf);
+}
+
+.seg-gordura {
+    background: var(--blush);
+}
+
+/* montador de cardápios */
+.refeicoes-builder {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    margin-bottom: .7rem;
+}
+
+.refeicao-block {
+    background: var(--cream);
+    border: 1.5px solid rgba(43, 69, 48, .15);
+    border-radius: 12px;
+    padding: .8rem .9rem;
+}
+
+.refeicao-head {
+    display: flex;
+    gap: .6rem;
+    margin-bottom: .5rem;
+}
+
+.refeicao-titulo {
+    flex: 1;
+    padding: .55rem .7rem;
+    border-radius: 8px;
+    border: 1.5px solid rgba(43, 69, 48, .2);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: .88rem;
+    background: #fff;
+    color: var(--forest);
+}
+
+.remover-refeicao {
+    background: transparent;
+    border: 1.5px solid rgba(192, 57, 43, .4);
+    color: #c0392b;
+    border-radius: 8px;
+    width: 34px;
+    cursor: pointer;
+    font-size: .85rem;
+}
+
+.refeicao-corpo {
+    width: 100%;
+    padding: .6rem .7rem;
+    border-radius: 8px;
+    border: 1.5px solid rgba(43, 69, 48, .2);
+    font-family: 'Work Sans', sans-serif;
+    font-size: .88rem;
+    min-height: 60px;
+    background: #fff;
+}
+
+.add-refeicao {
+    background: transparent;
+    border: 1.5px dashed var(--leaf);
+    color: var(--leaf);
+    font-weight: 600;
+    font-size: .85rem;
+    padding: .55rem 1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    margin-bottom: .5rem;
+}
+
+.add-refeicao:hover {
+    background: rgba(107, 143, 82, .08);
+}
+
+/* overlay sucesso!!! */
+.overlay-fosco {
+    position: fixed;
+    inset: 0;
+    background: rgba(43, 69, 48, .4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 1.5rem;
+    animation: fadeInOverlay .3s ease;
+}
+
+@keyframes fadeInOverlay {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.overlay-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 2.8rem 2.2rem;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(43, 69, 48, .3);
+    animation: overlayPop .35s ease;
+}
+
+@keyframes overlayPop {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.overlay-emoji {
+    font-size: 2.8rem;
+    display: block;
+    margin-bottom: .9rem;
+}
+
+.overlay-card h2 {
+    font-family: 'Fraunces', serif;
+    color: var(--forest);
+    margin: 0 0 .7rem;
+    font-size: 1.55rem;
+}
+
+.overlay-card p {
+    line-height: 1.6;
+    color: var(--ink);
+    opacity: .8;
+    margin: 0 0 1.7rem;
+}
+
+/* modal para a exclusão de pacientes */
+.overlay-card-perigo .overlay-emoji {
+    filter: grayscale(.2);
+}
+
+.overlay-erro {
+    color: #c0392b;
+    font-size: .85rem;
+    margin: -.9rem 0 1.2rem !important;
+}
+
+.overlay-actions {
+    display: flex;
+    gap: .8rem;
+}
+
+.overlay-actions button {
+    flex: 1;
+    border-radius: 999px;
+    padding: .8rem 1rem;
+    font-weight: 600;
+    font-size: .9rem;
+    cursor: pointer;
+}
+
+.btn-perigo {
+    background: #c0392b;
+    color: #fff;
+    border: none;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.btn-perigo:hover {
+    background: #a5301f;
+    transform: translateY(-1px);
+}
+
+.btn-perigo:disabled {
+    opacity: .6;
+    cursor: default;
+    transform: none;
+}

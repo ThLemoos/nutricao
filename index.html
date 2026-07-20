@@ -4,23 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrição - Alice Gomes</title>
+    <title>Alice Gomes - Nutricionista</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Caveat:wght@500;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
 
+    <nav class="site-nav">
+        <a href="./index.html" class="nav-logo">Alice Gomes</a>
+        <ul class="nav-links">
+            <li><a href="./index.html" class="active">Início</a></li>
+            <li><a href="./pages/sobre.html">Sobre</a></li>
+            <li><a href="#calculadora">Calculadora</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="./pages/area-paciente.html">Minha área</a></li>
+            <li><a href="./pages/cadastro.html" class="nav-cta">Cadastrar</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Abrir menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
     <section class="hero">
-        <p class="eyebrow reveal" style="animation-delay:.05s">um projeto não solicitado, mas agora eu vou fazer só porque me julgou 🍊</p>
-        <h1 class="reveal" style="animation-delay:.15s">Alice Gomes,<br><em>nutricionista</em>.</h1>
+        <p class="eyebrow reveal" style="animation-delay:.05s">nutrição de verdade, sem drama</p>
+        <h1 class="reveal" style="animation-delay:.15s">Comer bem também é <em>coisa séria.</em></h1>
         <p class="sub reveal" style="animation-delay:.25s">
-            Será que essa collab vai rolar?
+            Acompanhamento nutricional individualizado pra quem quer resultado
+            sem virar refém de dieta. Bora conversar?
         </p>
-        <div class="scroll-cue reveal" style="animation-delay:.35s">
+        <div class="hero-ctas reveal" style="animation-delay:.32s">
+            <a href="#contato" class="btn-primary">Agendar consulta</a>
+            <a href="#calculadora" class="btn-ghost">Testar calculadora</a>
+        </div>
+        <div class="scroll-cue reveal" style="animation-delay:.4s">
             <span>desce aqui</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
@@ -29,34 +49,142 @@
         </div>
     </section>
 
-    <section class="about">
-        <div class="about-card">
-            <div class="citrus-frame reveal" style="animation-delay:0s">
-                <div class="inner">
-                    <img src="./img/perfil.png">
+    <section class="calc" id="calculadora">
+        <div class="section-head">
+            <span class="eyebrow reveal">calculadora</span>
+            <h2 class="reveal" style="animation-delay:.05s">Quanto você precisa comer por dia?</h2>
+        </div>
+
+        <form id="calc-form" class="calc-wrap reveal" style="animation-delay:.1s" onsubmit="return false">
+            <div>
+                <div class="calc-toggle">
+                    <button type="button" data-gender="f" class="active">Mulher</button>
+                    <button type="button" data-gender="m">Homem</button>
                 </div>
-                <div class="rim"></div>
+                <div class="calc-field">
+                    <label for="calc-weight">Peso (kg)</label>
+                    <input type="number" id="calc-weight" value="65" min="30" max="250">
+                </div>
+                <div class="calc-field">
+                    <label for="calc-height">Altura (cm)</label>
+                    <input type="number" id="calc-height" value="165" min="120" max="230">
+                </div>
+                <div class="calc-field">
+                    <label for="calc-age">Idade</label>
+                    <input type="number" id="calc-age" value="28" min="14" max="100">
+                </div>
+                <div class="calc-field">
+                    <label for="calc-activity">Nível de atividade</label>
+                    <select id="calc-activity">
+                        <option value="1.2">Sedentário</option>
+                        <option value="1.375" selected>Leve (1-3x/semana)</option>
+                        <option value="1.55">Moderado (3-5x/semana)</option>
+                        <option value="1.725">Intenso (6-7x/semana)</option>
+                        <option value="1.9">Atleta</option>
+                    </select>
+                </div>
             </div>
-            <div class="about-text">
-                <h2 class="reveal" style="animation-delay:.1s">Sobre</h2>
-                <p class="reveal" style="animation-delay:.2s">
-                    Alice é nutricionista desde que
-                    nasceu e acha que todo guitarrista ilude as pessoas.<br>
-                    Será?? 🤔 🎸
-                </p>
-                <div class="nota reveal" style="animation-delay:.3s">Essa projeto vai sendo atualizado conforme esse
-                    pensamento for mudando 😌</div>
-                <div class="updated reveal" style="animation-delay:.4s">atualizado pela última vez em 16 de julho de 2026
+
+            <div class="calc-result">
+                <span class="label">seu gasto energético estimado</span>
+                <span class="value"><span id="calc-result-value">--</span> <span class="unit">kcal/dia</span></span>
+                <div class="breakdown">
+                    <div><span>Taxa metabólica basal</span><span id="calc-bmr">--</span></div>
+                    <div><span>Proteína / dia</span><span id="calc-protein">--</span></div>
+                    <div><span>Carboidrato / dia</span><span id="calc-carb">--</span></div>
+                    <div><span>Gordura / dia</span><span id="calc-fat">--</span></div>
                 </div>
+            </div>
+
+            <p class="calc-disclaimer">Estimativa pela fórmula de Mifflin-St Jeor. Não substitui uma consulta —
+                é só pra você ter uma ideia antes de conversarmos de verdade.</p>
+        </form>
+    </section>
+
+    <section class="services" id="servicos">
+        <div class="section-head">
+            <span class="eyebrow reveal" style="color:var(--citrus-light)">como eu ajudo</span>
+            <h2 class="reveal" style="animation-delay:.05s;color:var(--cream)">Serviços</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal" style="animation-delay:.05s">
+                <div class="citrus-frame small">
+                    <div class="inner"><span>1</span></div>
+                    <div class="rim"></div>
+                </div>
+                <h3>Consulta individual</h3>
+                <p>Anamnese completa, plano alimentar sob medida e retornos de acompanhamento.</p>
+            </div>
+            <div class="service-card reveal" style="animation-delay:.12s">
+                <div class="citrus-frame small">
+                    <div class="inner"><span>2</span></div>
+                    <div class="rim"></div>
+                </div>
+                <h3>Reeducação alimentar</h3>
+                <p>Mudança de hábitos sem restrição extrema, no seu ritmo e com o que você gosta de comer.</p>
+            </div>
+            <div class="service-card reveal" style="animation-delay:.19s">
+                <div class="citrus-frame small">
+                    <div class="inner"><span>3</span></div>
+                    <div class="rim"></div>
+                </div>
+                <h3>Nutrição esportiva</h3>
+                <p>Ajuste de dieta pra performance, ganho de massa ou composição corporal.</p>
             </div>
         </div>
     </section>
 
+    <section class="testimonials">
+        <div class="section-head">
+            <span class="eyebrow reveal">quem já passou por aqui</span>
+            <h2 class="reveal" style="animation-delay:.05s">Depoimentos</h2>
+        </div>
+        <div class="testi-wrap reveal" style="animation-delay:.1s">
+            <div class="testi-slide active">
+                <p>"Nunca me senti julgada. Pela primeira vez consegui manter uma rotina alimentar de verdade."</p>
+                <div class="who">— Marina T.</div>
+            </div>
+            <div class="testi-slide">
+                <p>"O plano se encaixou na minha vida, não o contrário. Isso fez toda diferença."</p>
+                <div class="who">— Rafael C.</div>
+            </div>
+            <div class="testi-slide">
+                <p>"Simples, direta e muito atenciosa. Recomendo de olhos fechados."</p>
+                <div class="who">— Juliana P.</div>
+            </div>
+            <div class="testi-dots">
+                <button class="active" aria-label="Depoimento 1"></button>
+                <button aria-label="Depoimento 2"></button>
+                <button aria-label="Depoimento 3"></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contato">
+        <h2>Vamos conversar?</h2>
+        <p>Manda uma mensagem e me conta um pouco sobre o que você está buscando.</p>
+        <a class="whatsapp-btn" id="whatsapp-link" href="#" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                    d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.62 1.44 5.13L2 22l5.13-1.54a9.9 9.9 0 0 0 4.9 1.28h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.02c-.24.68-1.4 1.3-1.94 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.77-4.12-4.91-4.31-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.83 2 .9 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.45.29.15.46.13.63-.08.17-.21.72-.84.91-1.13.19-.29.38-.24.64-.14.26.1 1.65.78 1.93.92.28.14.47.21.53.33.06.12.06.68-.18 1.36Z" />
+            </svg>
+            Chamar no WhatsApp
+        </a>
+    </section>
+
+    <script>
+        const numeroWhatsapp = "5521975759828";
+        const mensagemWhatsapp = "Oi, Alice! Vi seu site e queria saber mais sobre o acompanhamento nutricional.";
+
+        document.getElementById('whatsapp-link').href =
+            `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagemWhatsapp)}`;
+    </script>
+
     <footer>
-         <p>&copy; 2026 Alice Gomes, a Nutricionista Iludida. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Alice Gomes. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="./js/script.js"></script>
+    <script src="../js/script.js"></script>
 
 </body>
 

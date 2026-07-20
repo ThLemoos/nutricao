@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel - Alice Gomes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Caveat:wght@500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/painel.css">
+    <link rel="stylesheet" href="../css/plano.css">
+</head>
+
+<body>
+
+    <nav class="site-nav">
+        <a href="/pages/painel.html" class="nav-logo">Alice Gomes</a>
+    </nav>
+
+    <div id="login-view" class="login-box">
+        <h2>Entrar no painel</h2>
+        <div class="calc-field">
+            <label for="l-email">Email</label>
+            <input type="email" id="l-email">
+        </div>
+        <div class="calc-field">
+            <label for="l-senha">Senha</label>
+            <input type="password" id="l-senha">
+        </div>
+        <button id="l-btn" class="btn-primary" style="width:100%;border:none;cursor:pointer;">Entrar</button>
+        <p id="l-msg" style="font-size:.85rem;margin-top:.8rem;color:#c0392b;"></p>
+    </div>
+
+    <div id="painel-view" class="painel-wrap" style="display:none;">
+        <div class="top-bar">
+            <h2 style="font-family:'Fraunces',serif;color:var(--forest);margin:0;">Pacientes cadastrados</h2>
+            <button id="logout-btn">Sair</button>
+        </div>
+        <div id="lista"></div>
+        <p id="empty-msg" style="display:none;">Nenhum cadastro ainda.</p>
+    </div>
+
+    <div id="recusar-overlay" class="overlay-fosco" style="display:none;">
+        <div class="overlay-card overlay-card-perigo">
+            <span class="overlay-emoji">🙅</span>
+            <h2>Recusar cadastro?</h2>
+            <p>O cadastro de <strong id="recusar-nome">--</strong> vai ficar marcado como recusado. Você pode
+                excluir depois se quiser, mas por enquanto ele continua na lista.</p>
+            <p id="recusar-erro" class="overlay-erro" style="display:none;"></p>
+            <div class="overlay-actions">
+                <button id="recusar-cancelar-btn" type="button" class="btn-ghost">Cancelar</button>
+                <button id="recusar-confirmar-btn" type="button" class="btn-perigo">Sim, recusar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="excluir-overlay" class="overlay-fosco" style="display:none;">
+        <div class="overlay-card overlay-card-perigo">
+            <span class="overlay-emoji">🗑️</span>
+            <h2>Excluir cadastro?</h2>
+            <p>Isso apaga o plano, o histórico de peso e o acesso à área de <strong id="excluir-nome">--</strong>.
+                Essa ação não pode ser desfeita.</p>
+            <p id="excluir-erro" class="overlay-erro" style="display:none;"></p>
+            <div class="overlay-actions">
+                <button id="excluir-cancelar-btn" type="button" class="btn-ghost">Cancelar</button>
+                <button id="excluir-confirmar-btn" type="button" class="btn-perigo">Sim, excluir</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script type="module" src="../js/painel.js"></script>
+
+</body>
+
+</html>

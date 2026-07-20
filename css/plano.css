@@ -1,0 +1,572 @@
+.toast-global {
+    position: fixed;
+    left: 50%;
+    bottom: 2rem;
+    transform: translate(-50%, 20px);
+    background: var(--forest);
+    color: var(--cream);
+    padding: .85rem 1.4rem;
+    border-radius: 999px;
+    font-size: .88rem;
+    font-weight: 600;
+    box-shadow: 0 12px 28px rgba(43, 69, 48, .28);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease;
+    z-index: 999;
+    max-width: min(90vw, 420px);
+    text-align: center;
+}
+
+.toast-global.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.toast-global.toast-erro {
+    background: #c0392b;
+}
+
+/* editor de plano (painel da nutricionista) */
+.meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .7rem;
+    margin-bottom: 1.2rem;
+}
+
+.meta-grid .calc-field {
+    margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+    .meta-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.refeicoes-editor {
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+    margin-bottom: .8rem;
+}
+
+.refeicao-editor {
+    background: var(--cream);
+    border: 1.5px dashed rgba(43, 69, 48, .25);
+    border-radius: 14px;
+    padding: 1rem 1.1rem;
+}
+
+.refeicao-editor-head {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    margin-bottom: .8rem;
+    flex-wrap: wrap;
+}
+
+.refeicao-editor-head .refeicao-nome {
+    flex: 1;
+    min-width: 140px;
+    font-weight: 600;
+    font-family: 'Fraunces', serif;
+    color: var(--forest);
+    border: 1.5px solid rgba(43, 69, 48, .2);
+    border-radius: 8px;
+    padding: .5rem .7rem;
+    background: #fff;
+}
+
+.refeicao-editor-head .refeicao-horario {
+    border: 1.5px solid rgba(43, 69, 48, .2);
+    border-radius: 8px;
+    padding: .5rem .6rem;
+    background: #fff;
+    font-size: .85rem;
+}
+
+.refeicao-editor-acoes {
+    display: flex;
+    gap: .3rem;
+    margin-left: auto;
+}
+
+.refeicao-editor-acoes button {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    border: 1.5px solid rgba(43, 69, 48, .2);
+    background: #fff;
+    cursor: pointer;
+    font-size: .85rem;
+    color: var(--forest);
+}
+
+.refeicao-editor-acoes button.remover-refeicao {
+    color: #c0392b;
+    border-color: rgba(192, 57, 43, .35);
+}
+
+.alimentos-editor {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-bottom: .7rem;
+}
+
+.alimento-editor-row {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr .8fr auto;
+    gap: .5rem;
+    align-items: center;
+}
+
+.alimento-editor-row input {
+    padding: .55rem .7rem;
+    border-radius: 8px;
+    border: 1.5px solid rgba(43, 69, 48, .18);
+    font-family: 'Work Sans', sans-serif;
+    font-size: .88rem;
+    background: #fff;
+}
+
+.alimento-editor-row .remover-alimento {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    border: 1.5px solid rgba(192, 57, 43, .3);
+    background: #fff;
+    color: #c0392b;
+    cursor: pointer;
+}
+
+@media (max-width: 640px) {
+    .alimento-editor-row {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "nome nome" "qtd kcal" "remover remover";
+    }
+}
+
+.add-alimento {
+    background: transparent;
+    border: 1.5px dashed var(--leaf);
+    color: var(--leaf);
+    font-weight: 600;
+    font-size: .82rem;
+    padding: .45rem .9rem;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.nova-refeicao-select {
+    width: 100%;
+    padding: .7rem .9rem;
+    border-radius: 10px;
+    border: 1.5px dashed var(--citrus);
+    background: #fff;
+    color: var(--citrus);
+    font-weight: 600;
+    font-size: .88rem;
+    cursor: pointer;
+    margin-bottom: .4rem;
+}
+
+.plano-panel textarea.p-observacoes {
+    margin-top: .3rem;
+}
+
+/* plano da área do paciente */
+.plano-resumo {
+    display: flex;
+    justify-content: center;
+}
+
+.calorias-ring-wrap {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.ring-wrap {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    flex-shrink: 0;
+}
+
+.ring-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.ring-bg {
+    fill: none;
+    stroke: rgba(43, 69, 48, .1);
+    stroke-width: 12;
+}
+
+.ring-fg {
+    fill: none;
+    stroke: var(--citrus);
+    stroke-width: 12;
+    stroke-linecap: round;
+    transition: stroke-dashoffset .5s ease;
+}
+
+.ring-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.ring-center strong {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    color: var(--forest);
+    line-height: 1;
+}
+
+.ring-center span {
+    font-size: .72rem;
+    opacity: .65;
+    margin-top: .2rem;
+}
+
+.metas-secundarias {
+    display: flex;
+    gap: .8rem;
+    flex-wrap: wrap;
+}
+
+.meta-chip {
+    background: var(--cream);
+    border: 1.5px solid rgba(43, 69, 48, .12);
+    border-radius: 14px;
+    padding: .7rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    min-width: 100px;
+}
+
+.meta-chip span {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: var(--leaf);
+}
+
+.meta-chip strong {
+    color: var(--forest);
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+}
+
+.plano-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin-bottom: 1rem;
+}
+
+.plano-legenda {
+    font-family: 'Caveat', cursive;
+    font-size: 1.05rem;
+    color: var(--citrus);
+}
+
+.refeicao-card {
+    border: 1.5px solid rgba(43, 69, 48, .12);
+    border-radius: 14px;
+    padding: 1rem 1.2rem;
+    margin-bottom: .8rem;
+}
+
+.refeicao-card:last-child {
+    margin-bottom: 0;
+}
+
+.refeicao-card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: .6rem;
+    margin-bottom: .6rem;
+}
+
+.refeicao-card-head h4 {
+    font-family: 'Fraunces', serif;
+    color: var(--forest);
+    margin: 0;
+    font-size: 1.02rem;
+}
+
+.refeicao-hora {
+    font-size: .78rem;
+    opacity: .55;
+    white-space: nowrap;
+}
+
+.alimentos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+}
+
+.alimento-item {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .5rem .3rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .15s ease;
+}
+
+.alimento-item:hover {
+    background: var(--cream);
+}
+
+.alimento-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--citrus);
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.alimento-nome {
+    flex: 1;
+    font-size: .92rem;
+    color: var(--ink);
+}
+
+.alimento-qtd {
+    font-size: .8rem;
+    opacity: .6;
+}
+
+.alimento-kcal {
+    font-size: .78rem;
+    color: var(--leaf);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.alimento-item.feito .alimento-nome {
+    text-decoration: line-through;
+    opacity: .5;
+}
+
+.alimento-item.feito .alimento-qtd,
+.alimento-item.feito .alimento-kcal {
+    opacity: .4;
+}
+
+/* formulário da área do paciente */
+.anamnese-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.anamnese-form .campo-duplo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 640px) {
+    .anamnese-form .campo-duplo {
+        grid-template-columns: 1fr;
+    }
+}
+
+.anamnese-form textarea {
+    width: 100%;
+    padding: .7rem .9rem;
+    border-radius: 10px;
+    border: 1.5px solid rgba(43, 69, 48, .2);
+    font-family: 'Work Sans', sans-serif;
+    font-size: .92rem;
+    min-height: 80px;
+    background: var(--cream);
+    color: var(--ink);
+    resize: vertical;
+}
+
+.anamnese-form textarea:focus,
+.anamnese-form select:focus {
+    outline: 2px solid var(--citrus);
+    outline-offset: 1px;
+}
+
+.anamnese-form .anamnese-secao-titulo {
+    font-family: 'Fraunces', serif;
+    color: var(--forest);
+    font-size: .95rem;
+    margin: .4rem 0 -.2rem;
+    padding-top: .8rem;
+    border-top: 1px dashed rgba(43, 69, 48, .15);
+    display: block;
+}
+
+.anamnese-form .anamnese-secao-titulo:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+/* visualização do formulário (painel da nutricionista) */
+.anamnese-view {
+    background: var(--cream);
+    border: 1.5px dashed rgba(43, 69, 48, .25);
+    border-radius: 14px;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 1.2rem;
+}
+
+.anamnese-view h4 {
+    font-family: 'Fraunces', serif;
+    color: var(--forest);
+    margin: 0 0 .8rem;
+    font-size: 1rem;
+}
+
+.anamnese-vazio {
+    margin: 0;
+    font-size: .9rem;
+    opacity: .65;
+}
+
+.anamnese-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .6rem .8rem;
+    margin-bottom: .8rem;
+}
+
+@media (max-width: 640px) {
+    .alimento-editor-row {
+        grid-template-columns: 1fr 1fr auto;
+        grid-template-areas: none;
+    }
+
+    .alimento-editor-row .alimento-nome-input {
+        grid-column: 1 / -1;
+    }
+}
+
+.anamnese-item {
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+}
+
+.anamnese-item span {
+    font-size: .72rem;
+    opacity: .6;
+}
+
+.anamnese-item strong {
+    font-size: .88rem;
+    color: var(--forest);
+}
+
+.anamnese-texto-bloco {
+    margin-bottom: .7rem;
+}
+
+.anamnese-texto-bloco span {
+    display: block;
+    font-size: .72rem;
+    opacity: .6;
+    margin-bottom: .15rem;
+}
+
+.anamnese-texto-bloco p {
+    margin: 0;
+    font-size: .88rem;
+    line-height: 1.5;
+    color: var(--ink);
+    white-space: pre-wrap;
+}
+
+.anamnese-data {
+    font-size: .75rem;
+    opacity: .5;
+    margin: .4rem 0 0;
+}
+
+/* sugestão de calorias + banco de alimentos */
+.calorias-sugestao-row {
+    display: flex;
+    gap: .6rem;
+    align-items: flex-end;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.calorias-sugestao-row .calc-field {
+    flex: 1;
+    min-width: 160px;
+    margin-bottom: 0;
+}
+
+.sugerir-calorias-btn {
+    background: transparent;
+    border: 1.5px dashed var(--citrus);
+    color: var(--citrus);
+    font-weight: 600;
+    font-size: .82rem;
+    padding: .7rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .2s ease;
+}
+
+.sugerir-calorias-btn:hover:not(:disabled) {
+    background: rgba(232, 147, 74, .08);
+}
+
+.sugerir-calorias-btn:disabled {
+    opacity: .45;
+    cursor: default;
+    border-color: rgba(43, 69, 48, .2);
+    color: var(--ink);
+}
+
+.alimento-preset-row {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: .6rem;
+    flex-wrap: wrap;
+}
+
+.alimento-preset-select {
+    flex: 1;
+    min-width: 200px;
+    padding: .55rem .7rem;
+    border-radius: 8px;
+    border: 1.5px solid rgba(43, 69, 48, .18);
+    font-size: .85rem;
+    background: #fff;
+    color: var(--ink);
+}
+
+.alimento-editor-row input,
+.refeicao-editor-head .refeicao-nome,
+.refeicao-editor-head .refeicao-horario,
+.calorias-sugestao-row input {
+    min-width: 0;
+}
