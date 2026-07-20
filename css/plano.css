@@ -570,3 +570,24 @@
 .calorias-sugestao-row input {
     min-width: 0;
 }
+
+/* corrige o zoom automático do iOS ao focar em campos com fonte < 16px */
+@media (max-width: 768px) {
+
+    .login-box input,
+    .plano-panel input,
+    .plano-panel select,
+    .plano-panel textarea,
+    .alimento-editor-row input,
+    .refeicao-editor-head input,
+    .alimento-preset-select,
+    .nova-refeicao-select,
+    .calc-field input,
+    .calc-field select,
+    .peso-form input,
+    .anamnese-form input,
+    .anamnese-form textarea,
+    .anamnese-form select {
+        font-size: 16px !important;
+    }
+}
