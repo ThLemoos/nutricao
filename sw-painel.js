@@ -1,14 +1,14 @@
-const CACHE_NAME = 'painel-alice-v1';
+const CACHE_NAME = 'painel-alice-v2';
 const ASSETS = [
-    '/pages/painel.html',
-    '/css/style.css',
-    '/css/painel.css',
-    '/css/plano.css',
-    '/js/script.js',
-    '/js/painel.js',
-    '/js/firebase.js',
-    '/img/icon-192.png',
-    '/img/icon-512.png'
+    'pages/painel.html',
+    'css/style.css',
+    'css/painel.css',
+    'css/plano.css',
+    'js/script.js',
+    'js/painel.js',
+    'js/firebase.js',
+    'img/icon-192.png',
+    'img/icon-512.png'
 ];
 
 self.addEventListener('install', (event) => {
@@ -28,7 +28,6 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-    // não mexe em requests pro Firebase — sempre precisa ser rede, nunca cache
     if (event.request.url.includes('firestore.googleapis.com') ||
         event.request.url.includes('identitytoolkit.googleapis.com')) {
         return;
